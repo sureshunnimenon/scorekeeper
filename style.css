@@ -1,0 +1,30 @@
+body{
+    background-color: wheat;
+}
+
+.hdr {    
+    font-style: italic;
+    text-align: center;
+}
+
+.container {
+    margin: 10% 20% 0 10%;
+    border: goldenrod 2px solid;
+    padding: 5%;
+    background-color: antiquewhite;
+}
+
+header {
+    display: flex;
+    flex: wrap;
+}
+
+.score{
+    flex-direction: row;
+    flex-basis:50%;
+    flex:1;
+    font-size: 3em;    
+}
+
+
+
