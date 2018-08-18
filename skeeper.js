@@ -9,7 +9,7 @@ let btnB = document.querySelector("#btnB");
 let btnReset = document.querySelector("#reset");
 
 var pA, pB, winningScore;
-var gameOver = false;
+var gameOver, gameStarted = false;
 
 function init(){
     scoreA.textContent = 0;
@@ -18,6 +18,7 @@ function init(){
     pB = 0;   
     winningScore = 5; 
     gameOver= false;
+    gameStarted = false;
     maxScore.textContent = 5;
     scoreNum.value = 5;
     scoreA.style.color="black";
@@ -31,6 +32,7 @@ btnA.addEventListener("click", () => {
     if(!gameOver){
         pA++;
         scoreA.textContent = pA;
+        gameStarted = true;
         if(pA === winningScore){
             console.log('game over');
             document.querySelector(".statusGame").textContent="Game over!"
@@ -44,6 +46,7 @@ btnB.addEventListener("click", () => {
     if(!gameOver){
         pB++;
         scoreB.textContent = pB;
+        gameStarted = true;
         if(pB === winningScore){
             console.log('game over');
             document.querySelector(".statusGame").textContent="Game over!"
@@ -55,8 +58,12 @@ btnB.addEventListener("click", () => {
 
 btnReset.addEventListener("click", init)
 
-scoreNum.addEventListener("change", function(){
+scoreNum.addEventListener("change", () => {
     console.log("input clicked");
-    maxScore.textContent = scoreNum.value;
-    winningScore = Number(scoreNum.value);    
+        if(!gameStarted){
+            maxScore.textContent = scoreNum.value;
+            winningScore = Number(scoreNum.value); 
+        }
+        
+       
 })
